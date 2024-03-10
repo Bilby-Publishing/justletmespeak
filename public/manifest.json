@@ -1,0 +1,26 @@
+{
+	"name": "Just Let Me Speak",
+	"short_name": "JustSpeak",
+	"start_url": "/",
+	"scope": "/",
+	"display_override": ["standalone", "fullscreen", "minimal-ui"],
+	"display": "standalone",
+	"background_color": "#BDD8F4",
+	"theme_color": "#BDD8F4",
+	"description": "Just Let Me Speak",
+	"icons": [
+		{
+			"src": "/media/logo-large.png",
+			"sizes": "410x410",
+			"type": "image/png"
+		},{
+			"src": "/favicon128.ico",
+			"sizes": "128x128",
+			"type": "image/jpeg"
+		},{
+			"src": "/favicon.ico",
+			"sizes": "32x32",
+			"type": "image/jpeg"
+		}
+	]
+}

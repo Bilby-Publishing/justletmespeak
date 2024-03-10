@@ -1,0 +1,15 @@
+{
+	"name": "calculator",
+	"private": true,
+	"sideEffects": false,
+	"scripts": {
+		"build": "run-s build:*",
+		"dev": "run-p dev:*",
+		"dev:client": "esbuild --platform=node --format=cjs ./src/index.ts --outdir=public --bundle --watch",
+		"build:client": "esbuild --platform=node --format=cjs ./src/index.ts --outdir=public --bundle"
+	},
+	"engines": {},
+	"dependencies": {
+		"esbuild": "^0.20.1"
+	}
+}

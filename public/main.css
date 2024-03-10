@@ -1,0 +1,388 @@
+@font-face {
+	font-family: AuslanAlphabet;
+	src: url(/font/AuslanAlphabet.ttf), local('Times New Roman');
+	font-display: swap;
+}
+
+html {
+	scroll-behavior: smooth;
+	scrollbar-gutter: stable;
+}
+
+body {
+	display: grid;
+	font-family: arial, sans-serif;
+	font-size: 0.93rem;
+
+	grid-template-columns: auto min(850px, 97vw) auto;
+	justify-content: stretch;
+
+	margin: 0px;
+
+	--accent: #009;
+	--accent-light: #00C;
+	--accent-dark: #005;
+
+	--border-color: #bdd8f4;
+	--border-shadow-color: rgb(189 216 244 / 60%);
+
+	--secondary: #FA6400;
+	--secondary-light: #FF6600;
+	--secondary-dark: #C95100;
+}
+
+hr {
+	margin: 35px 10%;
+}
+
+
+h1 {
+	margin: 1.3em 0em 0.35em 0em;
+	color: var(--accent);
+}
+h2, h3, h4, h5 {
+	margin: 1.3em 0em 0.35em 0em;
+	color: var(--accent-dark);
+}
+h1 + p, h2 + p, h3 + p, h4 + p, h5 + p {
+	margin-top: 0px;
+}
+
+p {
+	margin: 0.8em 0;
+}
+
+a:link    { text-decoration: none; font-weight: normal; color: var(--secondary); }
+a:visited { text-decoration: none; font-weight: normal; color: var(--secondary); }
+a:active  { text-decoration: none; font-weight: normal; color: var(--secondary-dark); }
+a:hover   { text-decoration: none; font-weight: normal; color: var(--secondary-dark); }
+p > a {
+	display: inline-block;
+}
+a[disabled], a[data-disabled] {
+	filter: saturate(0.1);
+	cursor: no-drop;
+}
+
+ul, ol {
+	padding-inline-start: 30px;
+}
+p + ul, p + ol {
+	margin-top: -0.7em;
+}
+
+blockquote {
+	padding: 1.2em 2em 1.2em 2.1em;
+	margin: 30px auto;
+	width: 60%;
+
+	border-left:8px solid var(--border-color) ;
+	background: #f5f5f5;
+	position: relative;
+
+	font-style: italic;
+	line-height: 1.4;
+	font-size: 1.0em;
+	color: #626262;
+}
+blockquote::before{
+	position: absolute;
+	left: 4px;
+	top:-10px;
+
+	content: "\201C";
+
+	font-family: Arial;
+	color: var(--border-color);
+	font-size:4em;
+}
+blockquote::after{
+	content: '';
+}
+blockquote[data-markless] {
+	padding: 1.2em;
+}
+blockquote[data-markless]::before{
+	content: "";
+}
+
+blockquote > span{
+	margin-top:1em;
+	display:block;
+
+	font-style: normal;
+	font-weight: bold;
+	font-size: 0.8em;
+	color: #333333;
+}
+
+
+table {
+	font-size: 0.95em;
+	color: #24292e;
+
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	border: 1px solid #e1e4e8;
+}
+
+th, td {
+	border-collapse: collapse;
+	padding: 8px 10px;
+	border: 1px solid #e1e4e8;
+	vertical-align: top;
+}
+
+th {
+	background-color: #f6f8fa;
+	border-bottom-width: 2px;
+	font-weight: bold;
+}
+
+tbody tr:nth-child(odd) {
+	background-color: #fafbfc;
+}
+
+
+label {
+	user-select: none;
+}
+input {
+	font-size: 1.1em;
+	border-style: solid;
+	border-radius: 5px;
+	border-width: 1px;
+
+	padding: 2px 4px;
+}
+select {
+	font-size: 1.1em;
+	border-style: solid;
+	border-radius: 5px;
+	border-width: 1px;
+
+	padding: 2px 4px;
+}
+input[type="checkbox"] {
+	aspect-ratio: 1 / 1;
+	width: 14px;
+}
+
+button, .button {
+	background-color: #06c;
+	border-style: none;
+	border-radius: 4px;
+	padding: 5px 10px;
+
+	font-weight: 600 !important;
+	color: #EEE;
+
+	cursor: pointer;
+	user-select: none;
+
+	transition-property: transform;
+	transition-duration: 0.1s;
+	transition-timing-function: ease-in-out;
+}
+button:disabled, .button[data-disabled=true] {
+	filter: grayscale(1);
+	cursor: not-allowed;
+}
+button:not(:disabled):hover, .button[data-disabled=true]:hover {
+	transform: scale(105%);
+}
+
+
+
+ul.csv {
+	--separator: ", ";
+
+	padding: 0px;
+}
+ul.csv li {
+	display: inline-block;
+	margin-right: 0.3em;
+	text-indent: 0px;
+}
+ul.csv li::after {
+	content: var(--separator);
+}
+ul.csv li:last-child::after {
+	content: none;
+}
+
+
+
+
+.blue-border {
+	border: 0.1px solid var(--border-color);
+	border-radius: 30px;
+
+	box-shadow: var(--border-shadow-color) 0 0 16px 2px;
+}
+
+.content-box {
+	display: block;
+	position: relative;
+
+	background-color: white;
+
+	margin: min(3vh, 2rem) 0px;
+	padding: min(2.5rem, 5vw);
+
+	box-shadow: var(--border-shadow-color) 0 0 16px 2px;
+	border-radius: 30px;
+}
+.content-box h1:first-child {
+	margin-top: 0px;
+}
+
+body[data-pwa=true] .content-box {
+	margin: 1rem 0px;
+	padding: 2rem 2.5rem;
+}
+
+.wrapper {
+	grid-column: 2;
+}
+
+.wrapper-wide {
+	min-width: min(850px, calc(100vw - 34px));
+	max-width: max(80vw, 700px);
+	grid-column: span 3;
+	margin: 0px auto;
+}
+
+
+.hover-expand {
+	--expand-scale: 1.05;
+	z-index: 0;
+
+	transition-property: transform, z-index;
+	transition-duration: 0.1s, 0.1s;
+	transition-timing-function: ease-out;
+}
+.hover-expand:hover {
+	z-index: 100;
+	transform: scale(var(--expand-scale));
+}
+
+.hover-fade {
+	filter: opacity(1.0);
+	transition-property: filter;
+	transition-duration: 0.1s;
+	transition-timing-function: ease-out;
+}
+.hover-fade:hover {
+	filter: opacity(0.75);
+}
+
+
+
+
+
+
+.nav-button-bar {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	gap: 30px;
+}
+
+.nav-button {
+	display: flex;
+	cursor: pointer;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	color: var(--secondary-light) !important;
+
+	transition: all 0.1s;
+}
+
+.nav-button[data-disabled=true] {
+	color: grey !important;
+	cursor: not-allowed;
+}
+
+.nav-button:not([data-disabled=true]):hover, .nav-button:not([data-disabled=true]):active {
+	transform: scale(1.1);
+}
+
+
+.nav-button svg {
+	/* font-size: 36px; */
+	display: block;
+	height: 40px;
+	aspect-ratio: 1;
+
+	margin: 5px 0px;
+}
+
+
+.hover-click-msg::after {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	inset: 0;
+
+	background-color: #3330;
+	font-weight: bold;
+	font-size: 2em;
+	color: white;
+
+	transition-property: background-color;
+	transition-duration: 0.4s;
+}
+.hover-click-msg:hover::after {
+	content: "Click for more";
+	background-color: #3335;
+}
+
+p.explain-text {
+	font-style: italic;
+	font-size: 0.8em;
+	color: grey;
+}
+
+
+
+label.radio > input {
+	display: none;
+}
+label.radio > div {
+	display: inline-block;
+
+	border: 2px solid var(--border-shadow-color);
+	border-radius: 5px;
+
+	user-select: none;
+
+	padding: 5px;
+}
+label.radio > input:checked ~ div {
+	border-color: var(--accent-dark);
+}
+
+
+
+@media only print {
+	.hide-on-print {
+		position: relative;
+	}
+
+	.hide-on-print::after {
+		content: "";
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: white;
+		z-index: 9999;
+	}
+}
