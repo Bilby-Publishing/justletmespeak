@@ -57,7 +57,7 @@ export function Say(text: string) {
 	let utterance = new SpeechSynthesisUtterance(text);
 	utterance.voice = voices[voiceIdx];
 	utterance.pitch = voicePitch;
-	utterance.rate = voiceRate;
+	utterance.rate  = voiceRate;
 	speechSynthesis.speak(utterance);
 }
 
@@ -72,7 +72,7 @@ window.addEventListener("load", () => {
 
 
 	voiceSelectRef = document.getElementById("voice") as HTMLSelectElement;
-	if (voiceSelectRef) voiceSelectRef.addEventListener("change", VoiceChange);
+	if (voiceSelectRef) voiceSelectRef.addEventListener("keydown", VoiceChange);
 
 	voicePitchRef = document.getElementById("voicePitch") as HTMLInputElement;
 	voiceRateRef = document.getElementById("voiceRate") as HTMLInputElement;
