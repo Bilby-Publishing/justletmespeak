@@ -38,7 +38,7 @@ function VoiceChange(ev: Event) {
 	const target = ev.target as HTMLSelectElement;
 	const i = Number(target.value);
 
-	if (!voices[i]) return;
+	if (voices && i+1 >= voices.length) return;
 	voiceIdx = i;
 
 	localStorage.setItem('voice-name', voices[i].name);
@@ -72,7 +72,7 @@ window.addEventListener("load", () => {
 
 
 	voiceSelectRef = document.getElementById("voice") as HTMLSelectElement;
-	if (voiceSelectRef) voiceSelectRef.addEventListener("keydown", VoiceChange);
+	if (voiceSelectRef) voiceSelectRef.addEventListener("change", VoiceChange);
 
 	voicePitchRef = document.getElementById("voicePitch") as HTMLInputElement;
 	voiceRateRef = document.getElementById("voiceRate") as HTMLInputElement;
