@@ -29,7 +29,14 @@ async function keydown(ev: KeyboardEvent) {
 
 	switch (mode) {
 		case BreakMode.continuous:  breaking = [" ", "Enter"].includes(ev.key); break;
-		case BreakMode.punctuation: breaking = [",", ".", "-", "?", "!", "Enter"].includes(ev.key); break;
+		case BreakMode.punctuation:
+			if ([",", ".", "-", "?", "!"].includes(ev.key)) {
+				target.value += ev.key;
+				breaking = true;
+			} else if (ev.key === "Enter") {
+				breaking = true;
+			}
+			break;
 		case BreakMode.submit:      breaking = ev.key === "Enter"; break;
 	}
 
@@ -38,20 +45,46 @@ async function keydown(ev: KeyboardEvent) {
 	ev.stopPropagation();
 	ev.preventDefault();
 
-	let message = target.value;
-	Say(message);
+	let message = target.value.trim();
+	if (message.length < 1) return;
 
 	await TransitionStart();
+	Say(message);
 
 	const act = document.createElement("div");
-	act.innerText = message;
 	act.style.viewTransitionName = `message-${messageID}`;
+	act.className = "act";
+	act.addEventListener("click", (ev) => ActClick(act, ev));
+
+	// const save = document.createElement('div');
+	// save.className = "icon";
+	// save.style.backgroundImage = `url('/media/save.svg')`;
+	// save.setAttribute('data-action', 'save');
+	// act.appendChild(save);
+
+	const msg = document.createElement('div');
+	msg.className = "msg";
+	msg.innerText = message;
+	act.appendChild(msg);
+
 	historyRef.appendChild(act);
 	historyRef.scrollBy(0, historyRef.scrollHeight);
 	historyRef.style.height = "120px";
 
 	reader.style.viewTransitionName = `message-${++messageID}`;
 	reader.value = "";
+}
+
+function ActClick(self: HTMLDivElement, ev: MouseEvent) {
+	const target = ev.target as HTMLElement;
+
+	const action = target.getAttribute("data-action");
+	if (action === "save") {
+		// TODO
+	}
+
+	const msg = self.querySelector(".msg") as HTMLDivElement;
+	Say(msg?.innerText);
 }
 
 function SetMode(modeStr: string){

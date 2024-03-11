@@ -4,7 +4,6 @@ html {
 
 body {
 	font-family: arial, sans-serif;
-	font-size: 0.93rem;
 
 	background-color: #f1efe7;
 	color: #29261b;
@@ -50,10 +49,37 @@ a {
 }
 
 #history {
-	display: none;
-	max-height: 120px;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+
+	margin-left: 30px;;
+
 	overflow-y: auto;
 	margin-bottom: 15px;
+}
+
+#history .act {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	gap: 5px;
+}
+
+#history .act .icon {
+	background-size: contain;
+	background-repeat: no-repeat;
+	aspect-ratio: 1;
+	width: 15px;
+
+	cursor: pointer;
+	opacity: 0%;
+
+	transition-property: opacity;
+	transition-duration: 0.1s;
+}
+#history .act:hover .icon {
+	opacity: 100%;
 }
 
 .body {

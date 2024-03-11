@@ -1,3 +1,5 @@
+import { TransitionStart } from "./transition";
+
 export let voiceReady = false;
 let voices: SpeechSynthesisVoice[];
 let voicePitch = 1.0;
@@ -7,6 +9,7 @@ let voiceIdx = 0;
 let voiceSelectRef: HTMLSelectElement;
 let voicePitchRef: HTMLInputElement;
 let voiceRateRef: HTMLInputElement;
+let stopRef: HTMLDivElement;
 
 export function PopulateVoices() {
 	voices = speechSynthesis.getVoices();
@@ -59,6 +62,15 @@ export function Say(text: string) {
 	utterance.pitch = voicePitch;
 	utterance.rate  = voiceRate;
 	speechSynthesis.speak(utterance);
+
+	stopRef.style.display = "block";
+}
+
+async function Stop() {
+	speechSynthesis.cancel();
+
+	await TransitionStart();
+	stopRef.style.display = "none";
 }
 
 
@@ -73,6 +85,9 @@ window.addEventListener("load", () => {
 
 	voiceSelectRef = document.getElementById("voice") as HTMLSelectElement;
 	if (voiceSelectRef) voiceSelectRef.addEventListener("change", VoiceChange);
+
+	stopRef = document.getElementById("stop") as HTMLDivElement;
+	stopRef.addEventListener("click", Stop);
 
 	voicePitchRef = document.getElementById("voicePitch") as HTMLInputElement;
 	voiceRateRef = document.getElementById("voiceRate") as HTMLInputElement;

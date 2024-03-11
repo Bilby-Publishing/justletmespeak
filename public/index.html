@@ -31,14 +31,23 @@
 
 				<div id="history"></div>
 
-				<input
-					id="input"
-					type="text"
-					placeholder="loading voices..."
-					autocomplete="off"
-					style="view-timeline-name: 0;"
-					disabled
-				/>
+				<div style="display: flex; align-items: center; gap: 8px;">
+					<div
+						title="Cancel playing speech"
+						id="stop"
+						class="logo"
+						style="display: none; background-image: url('/media/stop.svg'); width: 20px;"
+					></div>
+					<input
+						id="input"
+						type="text"
+						placeholder="loading voices..."
+						autocomplete="off"
+						style="view-timeline-name: 0; flex-grow: 1;"
+						spellcheck="true"
+						disabled
+					/>
+				</div>
 
 				<details id="options" style="margin-top: 2em;">
 					<summary>Options</summary>
@@ -54,14 +63,12 @@
 			</div>
 		</div>
 
-		<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; margin: 0 10px;">
+		<div style="margin: 0 10px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 0.8em">
 			<a href="https://bilby.store" style="display: flex; flex-direction: column; align-items: center;">
 				<div class="logo" style="background-image: url('https://bilby.store/cdn/shop/files/BilbyLogoOct2022_bba69eca-0727-4060-872f-ffa5a3190d12_95x@2x.gif?v=1666773850');"></div>
-				Bilby Publishing
 			</a>
 			<a href="https://signplanet.net" style="display: flex; flex-direction: column; align-items: center;">
 				<div class="logo" style="background-image: url('https://signplanet.net/media/logo-large.png');"></div>
-				Signplanet
 			</a>
 		</div>
 	</body>
