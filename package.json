@@ -10,9 +10,9 @@
 		"build:client": "npx esbuild --platform=node --format=cjs ./src/index.ts --outdir=public --bundle"
 	},
 	"engines": {},
-	"dependencies": {},
 	"devDependencies": {
 		"esbuild": "^0.20.1",
-		"express": "^4.18.3"
+		"express": "^4.18.3",
+		"npm-run-all": "^4.1.5"
 	}
 }
