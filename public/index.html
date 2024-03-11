@@ -1,23 +1,57 @@
 <html>
 	<head>
 		<title>Just Let Me Speak</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<link rel="stylesheet" href="main.css"/>
 		<script src="./index.js"></script>
 	</head>
 	<body>
-		<div class="wrapper content-box">
-			<h1>Just Let Me Speak</h1>
+		<div></div>
+		<div class="body">
+			<div class="inner">
+				<div style="display: flex; align-items: flex-end; gap: 20px; margin-bottom: 2em;">
+					<h1 style="margin: 0;">Just Let Me Speak</h1>
+					<select id="mode">
+						<option value="continuous">continuously</option>
+						<option value="punctuation">on punctuation</option>
+						<option value="submit">on enter</option>
+					</select>
+				</div>
 
-			<select id="voice"></select>
-			<input
-				id="input"
-				placeholder="Type to speak"
-			/>
-			<select id="mode">
-				<option value="continuous">Continuous</option>
-				<option value="punctuation">Punctuation</option>
-				<option value="submit">Enter</option>
-			</select>
+				<div id="history"></div>
+
+				<input
+					id="input"
+					type="text"
+					placeholder="loading voices..."
+					autocomplete="off"
+					style="view-timeline-name: 0;"
+					disabled
+				/>
+
+				<details id="options" style="margin-top: 2em;">
+					<summary>Options</summary>
+					<div style="display: grid; grid-template-columns: auto 1fr; gap: 5px 10px; margin-top: 10px;">
+						<label>Voice</label>
+						<select id="voice"></select>
+						<label>Pitch</label>
+						<input id="voicePitch" type="range" min="0" max="2" value="1" step="0.1" />
+						<label>Rate</label>
+						<input id="voiceRate"  type="range" min="0.5" max="2" value="1" step="0.1" />
+					</div>
+				</details>
+			</div>
+		</div>
+
+		<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; margin: 0 10px;">
+			<a href="https://bilby.store" style="display: flex; flex-direction: column; align-items: center;">
+				<div class="logo" style="background-image: url('https://bilby.store/cdn/shop/files/BilbyLogoOct2022_bba69eca-0727-4060-872f-ffa5a3190d12_95x@2x.gif?v=1666773850');"></div>
+				Bilby Publishing
+			</a>
+			<a href="https://signplanet.net" style="display: flex; flex-direction: column; align-items: center;">
+				<div class="logo" style="background-image: url('https://signplanet.net/media/logo-large.png');"></div>
+				Signplanet
+			</a>
 		</div>
 	</body>
 </html>

@@ -1,11 +1,10 @@
 {
 	"exclude": [],
-	"include": ["remix.env.d.ts", "styles.d.ts", "**/*.ts", "**/*.tsx"],
+	"include": ["global.d.ts", "**/*.ts"],
 	"compilerOptions": {
 		"lib": ["DOM", "DOM.Iterable", "ES2021"],
 		"isolatedModules": true,
 		"esModuleInterop": true,
-		"jsx": "react-jsx",
 		"module": "CommonJS",
 		"moduleResolution": "node",
 		"resolveJsonModule": true,
