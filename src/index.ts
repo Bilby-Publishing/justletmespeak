@@ -54,14 +54,14 @@ async function keydown(ev: KeyboardEvent) {
 	reader.value = "";
 }
 
-function modeChange(ev: Event) {
-	const target = ev.target as HTMLSelectElement;
-
-	switch (target.value) {
+function SetMode(modeStr: string){
+	switch (modeStr) {
 		case "continuous":  mode = BreakMode.continuous; break;
 		case "punctuation": mode = BreakMode.punctuation; break;
 		case "submit":      mode = BreakMode.submit; break;
+		default: return;
 	}
+	localStorage.setItem('voice-mode', modeStr);
 }
 
 function onFocus() {
@@ -82,7 +82,16 @@ function Startup() {
 	historyRef = document.getElementById("history") as HTMLDivElement;
 
 	modeSelectRef = document.getElementById("mode") as HTMLSelectElement;
-	modeSelectRef.addEventListener("change", modeChange);
+	modeSelectRef.addEventListener("change", ev => SetMode((ev.target as HTMLSelectElement).value || ""));
+
+	const modeStr = localStorage.getItem('voice-mode');
+	if (modeStr !== null) {
+		for (const child of modeSelectRef.children) {
+			const opt = child as HTMLOptionElement;
+			if (opt.value === modeStr) child.setAttribute('selected', 'selected');
+		}
+		SetMode(modeStr);
+	}
 }
 
 
