@@ -19,7 +19,7 @@
 		},
 		"skipLibCheck": true,
 
-		// Remix takes care of building everything in `remix build`.
+		// Remix takes care of building everything in `npm run build`.
 		"noEmit": true
 	}
 }

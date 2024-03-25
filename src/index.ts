@@ -1,5 +1,6 @@
 import { TransitionStart } from "./transition";
 import { Say, voiceReady } from "./voice";
+import { InitInstaller } from "./install";
 
 declare global {
 	interface CSSStyleDeclaration {
@@ -129,6 +130,8 @@ function Startup() {
 
 
 window.addEventListener("load", () => {
+	InitInstaller();
+
 	const poll = setInterval(() => {
 		if (!voiceReady) return;
 
